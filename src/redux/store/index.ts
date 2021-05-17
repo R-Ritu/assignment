@@ -6,7 +6,7 @@ import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 
 const persistConfig = {
-  whitelist: ['user'],
+  whitelist: ['user', 'app'],
   storage,
   key: 'root',
 };
