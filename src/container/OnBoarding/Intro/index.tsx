@@ -77,7 +77,7 @@ const AppIntro = () => {
     data={slides} 
     onDone={_onDone}
     activeDotStyle = {{
-      backgroundColor: constants.Colors.colors.peach
+      backgroundColor: constants.Colors.peach
     }}
     showDoneButton = {false}
     showNextButton = {false}
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
   alignItems: 'center',
   justifyContent: 'space-between',
   flexDirection: "row",
-  backgroundColor: constants.Colors.colors.darkGreen,
+  backgroundColor: constants.Colors.darkGreen,
 },
 imageContainer: {
   width: 330,
@@ -114,7 +114,7 @@ footerTextStyle: {
 doneButton: {
   width: 209,
   height: 44,
-  backgroundColor: constants.Colors.colors.peach,
+  backgroundColor: constants.Colors.peach,
   bottom: 34,
   borderRadius: 10,
   alignItems: "center",
@@ -126,7 +126,7 @@ image: {
   marginVertical: 32,
 },
 text: {
-  color: constants.Colors.colors.white,
+  color: constants.Colors.white,
   textAlign: 'center',
   alignItems: 'center',
   justifyContent: "center",
