@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, ImageBackground, StyleSheet, Text, View } from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useDispatch } from 'react-redux';
 import constants from '../../../constants';
 import { mainAppView } from '../../../redux/actions/app';
@@ -37,7 +37,7 @@ const slides = [
 ];
 
 const AppIntro = () => {
- const dispatch = useDispatch() ;
+ const dispatch = useDispatch();
   const _renderItem = ({ item, index }:any) => {
     return (
       <View style={styles.slide}>
@@ -46,15 +46,19 @@ const AppIntro = () => {
           resizeMode="center"
           style={styles.imageContainer}
           source={item.imageContainer}>
-            <Image style={[styles.hraderTextStyle,{right: index === 0 ? 80 : index === 1 ? 30 : 15}]} 
+            <Image style={[styles.hraderTextStyle,{right: index === 0 ? 80 : index === 1 ? 30 : 15}]}
             resizeMode="contain"
             source={item.HeaderText} />
-            <Image style={{top: index === 2 ? 30 : null }} source={item.image} />
-            <Image style={[styles.footerTextStyle,{bottom: index === 2 ? 6: 39}]} 
+          <Image
+            style={{ top: index === 2 ? 30 : null }}
+            source={item.image}
+          />
+          <Image
+            style={[styles.footerTextStyle, { bottom: index === 2 ? 6 : 39 }]}
             resizeMode="contain"
             source={item.FooterText} />
             {index === 2 ?
-            <TouchableOpacity
+            <TouchableOpacity onPress={_onDone}
             style={styles.doneButton}>
               <Text style={styles.text}>Join Today</Text>
             </TouchableOpacity>
@@ -72,12 +76,12 @@ const AppIntro = () => {
     dispatch(mainAppView());
   };
   return (
-    <AppIntroSlider 
-    renderItem={_renderItem} 
-    data={slides} 
+    <AppIntroSlider
+    renderItem={_renderItem}
+    data={slides}
     onDone={_onDone}
     activeDotStyle = {{
-      backgroundColor: constants.Colors.peach
+      backgroundColor: constants.Colors.peach,
     }}
     showDoneButton = {false}
     showNextButton = {false}
@@ -87,12 +91,12 @@ const AppIntro = () => {
 
 export default AppIntro;
 
-const styles = StyleSheet.create({ 
+const styles = StyleSheet.create({
   slide: {
   flex: 1,
   alignItems: 'center',
   justifyContent: 'space-between',
-  flexDirection: "row",
+  flexDirection: 'row',
   backgroundColor: constants.Colors.darkGreen,
 },
 imageContainer: {
@@ -108,7 +112,7 @@ hraderTextStyle: {
 footerTextStyle: {
   width: 222,
   height: 92,
-  justifyContent: "center",
+  justifyContent: 'center',
   bottom: 39,
 },
 doneButton: {
@@ -117,8 +121,8 @@ doneButton: {
   backgroundColor: constants.Colors.peach,
   bottom: 34,
   borderRadius: 10,
-  alignItems: "center",
-  justifyContent: "center"
+  alignItems: 'center',
+  justifyContent: 'center',
 },
 image: {
   width: 274,
@@ -129,7 +133,7 @@ text: {
   color: constants.Colors.white,
   textAlign: 'center',
   alignItems: 'center',
-  justifyContent: "center",
+  justifyContent: 'center',
 },
 title: {
   fontSize: 22,

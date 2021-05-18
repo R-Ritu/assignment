@@ -2,7 +2,11 @@
 
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
+import BackIcon from '../../components/BackIcon';
+import Header from '../../components/Header';
+import constants from '../../constants';
 import Login from '../../container/Auth/Login';
+import Signup from '../../container/Auth/Signup';
 import Garments from '../../container/Garments';
 import Home from '../../container/Home';
 import Profile from '../../container/Profile';
@@ -12,8 +16,16 @@ const GarmentStack = createStackNavigator();
 const ProfileStack = createStackNavigator();
 
 const AuthStackNavigator = () => {
- return ( <AuthStack.Navigator>
-      <AuthStack.Screen name="Login" component={Login}/>
+  return (<AuthStack.Navigator screenOptions={{
+    headerLeft: (props) => <BackIcon {...props} />,
+
+ }}>
+    <AuthStack.Screen name="Login" component={Login} options={{
+        headerTitle: (props) => <Header {...props} title="Login"/>,
+    }} />
+      <AuthStack.Screen name="SignUp" component={Signup} options={{
+        headerTitle: (props) => <Header {...props} title="Sign Up"/>,
+    }} />
     </AuthStack.Navigator>);
 };
 
@@ -28,6 +40,7 @@ const HomeStackNavigator = () => {
         fontWeight: 'bold',
         color: '#fff',
       },
+      headerBackImage:constants.Images.backIcon,
     }}>
       <HomeStack.Screen name="Dashboard" component={Home}  />
 

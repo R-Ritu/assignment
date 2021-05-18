@@ -13,4 +13,5 @@ export default {
     leftAngle: require('../assets/images/intro/leftAngle.png'),
     rightAngle: require('../assets/images/intro/rightAngle.png'),
   },
+  backIcon: require('../assets/images/backIcon.png'),
 };
