@@ -1,36 +1,63 @@
 import React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, ImageBackground, StyleSheet, Text, View } from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
+import { TouchableOpacity } from "react-native-gesture-handler";
 import constants from '../../../constants';
 
 const slides = [
   {
     key: 'one',
-    title: 'What is Pristeem?',
-    text: 'Pristeem is a new on-demand, self-service clothing care amenity for residential & commercial properties. Plug into a faster, gentler and more eco-friendly alternative to laundry and dry cleaning.',
     image: constants.Images.intro.signup,
+    imageContainer: constants.Images.intro.container,
+    HeaderText: constants.Images.intro.Headertext,
+    FooterText: constants.Images.intro.Footertext,
+    leftAngle: '',
+    rightAngle: constants.Images.intro.rightAngle,
   },
   {
     key: 'two',
-    title: 'Why do you need Pristeem?',
-    text: 'Pristeem is a new on-demand, self-service clothing care amenity for residential & commercial properties. Plug into a faster, gentler and more eco-friendly alternative to laundry and dry cleaning.',
     image: constants.Images.intro.pristeem,
+    imageContainer: constants.Images.intro.container,
+    HeaderText: constants.Images.intro.Headertext1,
+    FooterText: constants.Images.intro.Footertext1,
+    leftAngle: constants.Images.intro.leftAngle,
+    rightAngle: constants.Images.intro.rightAngle,
   },
   {
     key: 'three',
-    title: 'Sign Up for the best services',
-    text: 'Pristeem is a new on-demand, self-service clothing care amenity for residential & commercial properties. ',
     image: constants.Images.intro.pristeem1,
+    imageContainer: constants.Images.intro.container,
+    HeaderText: constants.Images.intro.Headertext2,
+    FooterText: constants.Images.intro.Footertext2,
+    leftAngle: constants.Images.intro.leftAngle,
+    rightAngle: '',
   },
 ];
 
 const AppIntro = () => {
-  const _renderItem = ({ item }:any) => {
+  const _renderItem = ({ item, index }:any) => {
     return (
       <View style={styles.slide}>
-        <Text style={styles.title}>{item.title}</Text>
-        <Image source={item.image} />
-        <Text style={styles.text}>{item.text}</Text>
+        <Image source={item.leftAngle} />
+          <ImageBackground
+          resizeMode="center"
+          style={styles.imageContainer}
+          source={item.imageContainer}>
+            <Image style={[styles.hraderTextStyle,{right: index === 0 ? 80 : index === 1 ? 30 : 15}]} 
+            resizeMode="contain"
+            source={item.HeaderText} />
+            <Image style={{top: index === 2 ? 30 : null }} source={item.image} />
+            <Image style={[styles.footerTextStyle,{bottom: index === 2 ? 6: 39}]} 
+            resizeMode="contain"
+            source={item.FooterText} />
+            {index === 2 ?
+            <TouchableOpacity
+            style={styles.doneButton}>
+              <Text style={styles.text}>Join Today</Text>
+            </TouchableOpacity>
+            : null }
+        </ImageBackground>
+        <Image source={item.rightAngle} />
       </View>
     );
   };
@@ -41,26 +68,64 @@ const AppIntro = () => {
     // this.setState({ showRealApp: true });
   };
   return (
-    <AppIntroSlider renderItem={_renderItem} data={slides} onDone={_onDone}/>
+    <AppIntroSlider 
+    renderItem={_renderItem} 
+    data={slides} 
+    onDone={_onDone}
+    activeDotStyle = {{
+      backgroundColor: constants.Colors.colors.peach
+    }}
+    showDoneButton = {false}
+    showNextButton = {false}
+    />
   );
 };
 
 export default AppIntro;
 
-const styles = StyleSheet.create({ slide: {
+const styles = StyleSheet.create({ 
+  slide: {
   flex: 1,
   alignItems: 'center',
-  justifyContent: 'center',
-  backgroundColor: 'blue',
+  justifyContent: 'space-between',
+  flexDirection: "row",
+  backgroundColor: constants.Colors.colors.darkGreen,
+},
+imageContainer: {
+  width: 330,
+  height: 580,
+  alignItems: 'center',
+  justifyContent: 'space-between',
+},
+hraderTextStyle: {
+  right: 20,
+  top: 20,
+},
+footerTextStyle: {
+  width: 222,
+  height: 92,
+  justifyContent: "center",
+  bottom: 39,
+},
+doneButton: {
+  width: 209,
+  height: 44,
+  backgroundColor: constants.Colors.colors.peach,
+  bottom: 34,
+  borderRadius: 10,
+  alignItems: "center",
+  justifyContent: "center"
 },
 image: {
-  width: 320,
-  height: 320,
+  width: 274,
+  height: 246,
   marginVertical: 32,
 },
 text: {
-  color: 'rgba(255, 255, 255, 0.8)',
+  color: constants.Colors.colors.white,
   textAlign: 'center',
+  alignItems: 'center',
+  justifyContent: "center",
 },
 title: {
   fontSize: 22,
