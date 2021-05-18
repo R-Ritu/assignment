@@ -1,7 +1,9 @@
 import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
+import { useDispatch } from 'react-redux';
 import constants from '../../../constants';
+import { mainAppView } from '../../../redux/actions/app';
 
 const slides = [
   {
@@ -25,6 +27,7 @@ const slides = [
 ];
 
 const AppIntro = () => {
+  const dispatch = useDispatch();
   const _renderItem = ({ item }:any) => {
     return (
       <View style={styles.slide}>
@@ -39,6 +42,7 @@ const AppIntro = () => {
     // User finished the introduction. Show real app through
     // navigation or simply by controlling state
     // this.setState({ showRealApp: true });
+    dispatch(mainAppView());
   };
   return (
     <AppIntroSlider renderItem={_renderItem} data={slides} onDone={_onDone}/>

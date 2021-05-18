@@ -10,7 +10,7 @@ const user = (
 ) => {
   switch (action.type) {
     case 'mainApp':
-      return { ...state, showRealApp: false };
+      return { ...state, showRealApp: true };
     case 'logOut':
       return { ...initialState };
     default:
