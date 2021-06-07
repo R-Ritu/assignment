@@ -1,3 +1,2 @@
-import user from './users';
-import app from './app';
-export default { user, app };
+import post from './post';
+export default { post };

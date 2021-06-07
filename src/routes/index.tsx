@@ -1,11 +1,10 @@
 import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from "@react-navigation/stack";
 import React from 'react';
 import { useColorScheme } from 'react-native';
-import { useSelector } from 'react-redux';
 import constants from '../constants';
-import AppIntro from '../container/OnBoarding/Intro';
-import { AuthStackNavigator } from './navigator/StackNavigator';
-import BottomTabNavigator from './navigator/TabNavigator';
+import Home from "../container/Home";
+
 const MyTheme = {
   ...DefaultTheme,
   dark: false,
@@ -15,18 +14,16 @@ const MyTheme = {
   },
 };
 
+const RouteStack = createStackNavigator()
+
 const Router: React.FC = () => {
   const scheme = useColorScheme();
-  const {user:{isLoggedIn} , app:{showRealApp} } = useSelector((state: { user: { isLoggedIn: boolean }, app:{showRealApp:boolean} }) => state);
   return (<>
-    {showRealApp ?
       <NavigationContainer theme={scheme === 'dark' ? DarkTheme : MyTheme}>
-        {!isLoggedIn ?
-          <AuthStackNavigator />
-          :
-          <BottomTabNavigator />}
-      </NavigationContainer> :
-      <AppIntro />}
+        <RouteStack.Navigator>
+          <RouteStack.Screen name="All Post" component={Home} />
+        </RouteStack.Navigator>
+      </NavigationContainer> 
     </>
   );
 };
