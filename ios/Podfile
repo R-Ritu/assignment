@@ -2,9 +2,9 @@ require_relative '../node_modules/react-native/scripts/react_native_pods'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
 platform :ios, '10.0'
-project './pristm.xcodeproj'
+project './assignment.xcodeproj'
 
-target 'pristm' do
+target 'assignment' do
   config = use_native_modules!
 
   use_react_native!(
@@ -13,7 +13,7 @@ target 'pristm' do
     :hermes_enabled => false
   )
 
-  target 'pristmTests' do
+  target 'assignmentTests' do
     inherit! :complete
     # Pods for testing
   end

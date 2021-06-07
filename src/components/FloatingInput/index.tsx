@@ -41,20 +41,20 @@ class FloatingInput extends Component<Props,State> {
       position: 'absolute',
       left: 0,
       top: this._animatedIsFocused.interpolate({
-        inputRange: [0, 1],
-        outputRange: [18, 0],
+        inputRange: [0, 3],
+        outputRange: [28, 0],
       }),
       fontSize: this._animatedIsFocused.interpolate({
         inputRange: [0, 1],
-        outputRange: [20, 14],
+        outputRange: [14, 14],
       }),
       color: this._animatedIsFocused.interpolate({
         inputRange: [0, 1],
-        outputRange: ['#aaa', '#000'],
+        outputRange: ['#1E1E1E', '#1E1E1E'],
       }),
     };
     return (
-      <View style={{ paddingTop: 18 }}>
+      <View style={{ paddingTop: 32 }}>
         <Animated.Text
           style={labelStyle}>
           {label}
@@ -73,7 +73,7 @@ class FloatingInput extends Component<Props,State> {
 
 const styles = StyleSheet.create({
   inputStyle: {
-    height: 26,
+    height: 46,
     fontSize: 16,
     color: '#000',
     borderBottomWidth: 1,

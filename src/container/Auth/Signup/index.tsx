@@ -1,8 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useCallback, useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { useDispatch } from 'react-redux';
 import FloatingInput from '../../../components/FloatingInput';
+import RectangleButton from "../../../components/RectangleButton";
 import { login } from '../../../redux/actions';
 
 const Signup = () => {
@@ -17,8 +18,7 @@ const Signup = () => {
     dispatch(login());
   },[]);
   return (
-    <View>
-      <Text onPress={handleSignup}>Signup</Text>
+    <View style={styles.mainContainer}>
       <FloatingInput  label="Name"
         value={name}
         onChangeText={(val)=>setName(val)}
@@ -43,10 +43,16 @@ const Signup = () => {
         value={mobile}
         keyboardType="numeric"
         onChangeText={(val)=>setMobile(val)}/>
+        <RectangleButton></RectangleButton>
     </View>
   );
 };
 
 export default Signup;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  mainContainer: {
+    marginHorizontal: 16,
+    marginTop: 20,
+  }
+});

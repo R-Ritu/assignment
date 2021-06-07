@@ -131,7 +131,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.pristm"
+        applicationId "com.assignment"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
